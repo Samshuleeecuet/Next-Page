@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useNavigation } from 'react-router-dom';
 import BookDetails from './BookDetails';
+import LoadingSpinner from './LoadingSpinner';
 
 const Book = () => {
     // const [books,setBooks] = useState([])
@@ -9,6 +10,11 @@ const Book = () => {
     //     .then(res => res.json())
     //     .then(data=> console.log(data));
     // },[])
+    const navigation = useNavigation()
+  // console.log(navigation.state)
+  if (navigation.state === 'loading') {
+    return <LoadingSpinner />
+  }
     const booksData = useLoaderData();
     const {books,total} = booksData;
     // console.log(books);

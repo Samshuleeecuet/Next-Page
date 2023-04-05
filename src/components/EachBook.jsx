@@ -4,13 +4,13 @@ import LoadingSpinner from './LoadingSpinner'
 
 const EachBook = () => {
     const navigation = useNavigation()
-  console.log(navigation.state)
+  // console.log(navigation.state)
   if (navigation.state === 'loading') {
     return <LoadingSpinner />
   }
   const bookData = useLoaderData()
   const [fold, setFold] = useState(true)
-  console.log(bookData)
+  // console.log(bookData)
   const { image, title, desc, authors, publisher, year, rating, url, price } =
     bookData
 

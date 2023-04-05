@@ -11,11 +11,13 @@ import About from './components/About';
 import Book from './components/Book';
 import EachBook from './components/EachBook';
 import LoadingSpinner from './components/LoadingSpinner';
+import ErrorPage from './components/ErrorPage';
 
 const router = createBrowserRouter ([
   {
    path: '/',
    element: <App></App>,
+   errorElement:<ErrorPage></ErrorPage>,
    children: [
     {
       path: '/',
@@ -35,13 +37,14 @@ const router = createBrowserRouter ([
       element: <EachBook></EachBook>,
       loader: ({params})=>fetch(`https://api.itbook.store/1.0/books/${params.id}`)
 
+    },
+    {
+      path: 'loader',
+      element: <LoadingSpinner></LoadingSpinner>,
     }
    ]
   },
-  {
-    path: 'loader',
-    element: <LoadingSpinner></LoadingSpinner>,
-  }
+  
 ])
 
 
