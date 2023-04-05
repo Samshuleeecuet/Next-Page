@@ -9,6 +9,8 @@ import {
 import Home from './components/Home';
 import About from './components/About';
 import Book from './components/Book';
+import EachBook from './components/EachBook';
+import LoadingSpinner from './components/LoadingSpinner';
 
 const router = createBrowserRouter ([
   {
@@ -27,9 +29,19 @@ const router = createBrowserRouter ([
       path: 'book',
       element: <Book></Book>,
       loader: () => fetch('https://api.itbook.store/1.0/new'),
+    },
+    {
+      path: 'book/:id',
+      element: <EachBook></EachBook>,
+      loader: ({params})=>fetch(`https://api.itbook.store/1.0/books/${params.id}`)
+
     }
    ]
   },
+  {
+    path: 'loader',
+    element: <LoadingSpinner></LoadingSpinner>,
+  }
 ])
 
 
